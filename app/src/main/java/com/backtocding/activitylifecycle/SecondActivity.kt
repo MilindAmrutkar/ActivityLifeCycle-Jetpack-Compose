@@ -1,10 +1,11 @@
 package com.backtocding.activitylifecycle
 
-import android.content.res.Configuration
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.material3.Text
+import com.backtocding.activitylifecycle.ui.theme.ActivityLifeCycleTheme
 
 class SecondActivity: ComponentActivity() {
     
@@ -13,6 +14,12 @@ class SecondActivity: ComponentActivity() {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "==========================================")
         Log.d(TAG, "onCreate: SecondActivity")
+
+        setContent {
+            ActivityLifeCycleTheme {
+                Text(text = "This is Second Activity")
+            }
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

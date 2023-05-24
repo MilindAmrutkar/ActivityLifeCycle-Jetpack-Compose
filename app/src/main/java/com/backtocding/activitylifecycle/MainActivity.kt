@@ -1,23 +1,16 @@
 package com.backtocding.activitylifecycle
 
 import android.content.Intent
-import android.content.res.Configuration
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.backtocding.activitylifecycle.ui.theme.ActivityLifeCycleTheme
 
@@ -34,19 +27,11 @@ class MainActivity : ComponentActivity() {
             level = savedInstanceState.getInt("level")
         }
         Log.d(TAG, "onCreate: score = $score level = $level")
-
-
         setContent {
             ActivityLifeCycleTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxWidth(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    val context = LocalContext.current
-                    Greeting() {
-                        context.startActivity(Intent(context, SecondActivity::class.java))
-                    }
+                val context = LocalContext.current
+                MyButton() {
+                    context.startActivity(Intent(context, SecondActivity::class.java))
                 }
             }
         }
@@ -105,14 +90,12 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(modifier: Modifier = Modifier, onButtonClick: () -> Unit) {
+fun MyButton(onButtonClick: () -> Unit) {
     Button(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(100.dp),
+        modifier = Modifier.padding(16.dp),
         onClick = {
-        onButtonClick()
-    }) {
+            onButtonClick()
+        }) {
         Text(text = "Click Me")
     }
 }
