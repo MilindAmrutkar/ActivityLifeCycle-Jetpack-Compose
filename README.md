@@ -26,5 +26,11 @@ This application showcases the Android Activity Lifecycle via Jetpack Compose wi
 - `MainActivity`: `onRestart()`, `onStart()`, `onResume()`
 - `SecondActivity`: `onStop()`, `onDestroy()`
 
+**Phone Call Interruption on `MainActivity`:**
+- `MainActivity`: `onPause()`, `onStop()`
+- Phone App: `onCreate()`, `onStart()`, `onResume()`
+- When Phone call ends, if `MainActivity` is resumed:
+- `MainActivity`: `onRestart()`, `onStart()`, `onResume()`
+
 Through this application, you can gain a better understanding of Android's Activity Lifecycle, and how various events trigger different lifecycle methods. Enjoy exploring!
 
